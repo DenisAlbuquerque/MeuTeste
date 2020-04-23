@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  basUrl: 'https://api.themoviedb.org/3/'
+  basUrl: 'https://api.themoviedb.org/3/',
+  urlImage:'https://image.tmdb.org/t/p/w200/'
 };
 
 /*
