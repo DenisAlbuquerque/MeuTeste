@@ -33,10 +33,10 @@ export class FilmeService {
 
   //Retorna um Filme especifico buscando por uma palavra no titulo do filme
   getMovieSearch(query: string):Observable<any>{
-    const params = new HttpParams().set('api_key', this.apiKey)
-                                   .set('query', query);
-    return this.http.get(`${this.URL_API}movie`, {params});
-    //return this.http.get(`${this.URL_API}movie?query=${query}&api_key=${this.apiKey}`)
+    const params = new HttpParams().set('query', query)
+                                   .set('api_key', this.apiKey);
+    return this.http.get(`${this.URL_API}search/movie`, {params});
+    //return this.http.get(`${this.URL_API}search/movie?query=${query}&api_key=${this.apiKey}`)
   }
 
   //Retorna uma lista de todos as categorias de filmes
