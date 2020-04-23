@@ -2,13 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LocadoraComponent } from './locadora/locadora.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilmeComponent } from './filme/filme.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LocadoraComponent
+    FilmeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

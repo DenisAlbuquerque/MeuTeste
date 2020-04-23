@@ -3,12 +3,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class LocadoraService {
+
   URL_API: string = environment.basUrl
   apiKey: string = 'a5af780c7aaea135c9c3ddcf5b18b7cd'
 
