@@ -16,6 +16,7 @@ export class FilmeComponent implements OnInit {
   filme: Filme;
   filmes: Filme[] = new Array<Filme>();
   categorias: Categoria[];
+  fonte: number = 16;
 
   constructor(private filmeService: FilmeService) {}
 
@@ -25,18 +26,7 @@ export class FilmeComponent implements OnInit {
 
     this.getGenreList();
 
-    /*
-    this.filmeService.getMovie('550').subscribe(res=>{
-      this.filme = res;
-      console.log(this.filme);
-    })
-
-    this.filmeService.getGenreList().subscribe(res => {
-      this.categorias = res;
-      console.log(this.categorias);
-    })
-
-  */
+    this.toggleContrast();
 
   }
 
@@ -70,6 +60,67 @@ export class FilmeComponent implements OnInit {
     this.filmeService.getGenre(genreId).subscribe(res => {
       this.filmes = res.results;
     })
+  }
+
+  aumentarFonte(){
+    this.fonte = this.fonte + 2;
+  }
+
+  diminuirFonte(){
+    this.fonte = this.fonte - 2;
+  }
+
+  restaurarFonte(){
+    this.fonte = 16;
+  }
+
+  toggleContrast(){
+
+    debugger
+    var Contrast = {
+      storage: 'contrastState',
+      cssClass: 'contrast',
+      currentState: null,
+      check: checkContrast,
+      getState: getContrastState,
+      setState: setContrastState,
+      toogle: toogleContrast,
+      updateView: updateViewContrast
+    };
+
+    this.toggleContrast = function () { Contrast.toogle(); };
+
+    Contrast.check();
+
+    function checkContrast() {
+        this.updateView();
+    }
+
+    function getContrastState() {
+        return localStorage.getItem(this.storage) === 'true';
+    }
+
+    function setContrastState(state) {
+        localStorage.setItem(this.storage, '' + state);
+        this.currentState = state;
+        this.updateView();
+    }
+
+    function updateViewContrast() {
+        var body = document.body;
+
+        if (this.currentState === null)
+            this.currentState = this.getState();
+
+        if (this.currentState)
+            body.classList.add(this.cssClass);
+        else
+            body.classList.remove(this.cssClass);
+    }
+
+    function toogleContrast() {
+        this.setState(!this.currentState);
+    }
   }
 
 }
