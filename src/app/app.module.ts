@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { FilmeComponent } from './filme/filme.component';
 import { HomeComponent } from './home/home.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

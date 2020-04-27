@@ -1,3 +1,87 @@
-<p>
-  filme osi!
-</p>
+<div class="container">
+
+  <div class="col-sm-12 fonte">
+    <button
+      class="mx-1 btn-fonte"
+      type="button"
+      title="Diminuir Fonte"
+      (click)="diminuirFonte()"
+    >-
+    </button>
+    <button
+      class="mx-1 btn-fonte"
+      type="button"
+      title="Aumentar Fonte"
+      (click)="aumentarFonte()"
+    >+
+    </button>
+    <button
+      class="mx-1 btn-fonte"
+      type="button"
+      title="Restaurar Fonte"
+      (click)="restaurarFonte()"
+    >Restaurar Fonte
+    </button>
+    <button
+      class="mx-1 btn-fonte"
+      type="button"
+      title="Alto contraste"
+      (click)="toggleContrast()"
+    >Alto contraste
+    </button>
+  </div>
+
+
+
+  <div class="col-sm-12" >
+    <h3 class="text-center title">Lista de Filmes</h3>
+    <h5 class="text-center sub-title">
+      Aproveite a lista de filmes separamos para você.
+    </h5>
+  </div>
+
+  <div class="row ml-1">
+    <input
+      type="search"
+      class="form-control ds-input col-3 my-3"
+      id="search-input"
+      #busca
+      placeholder="Pesquisar..."
+      autocomplete="off"
+      spellcheck="false"/>
+
+    <button
+      type="button"
+      class="my-3 mx-2 btn btn-sm btn-outline-primary col-1 searchBtn"
+      (click)="search(busca.value)">
+      Buscar
+    </button>
+
+    <div class="dropdown mt-3 col-2">
+      <button class="btn btn-secondary dropdown-toggle mb-3"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categorias
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+        <a class="dropdown-item" tabindex = "0" (click)='getMovies()'>All</a>
+        <a class="dropdown-item" tabindex = "0" *ngFor="let c of categorias" (click)='getGenre(c.id)'>{{c.name}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 50px;">
+    <div class="col-4 mb-3" *ngFor="let f of filmes">
+      <div class="card p-3">
+        <div class="row align-middle">
+          <img class="card-img-top mb-3" [src]="urlImage + f.poster_path" />
+        </div>
+        <div class="card-block" tabindex = "0">
+          <h4 class="card-title text-center">{{ f.original_title }}</h4>
+          <p class="card-text text-center" [ngStyle]="{'fontSize': fonte + 'px'}">{{ f.overview }}</p>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+
+
